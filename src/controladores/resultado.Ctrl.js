@@ -14,7 +14,7 @@ export const getResultados = async (req, res) => {
 export const getResultadoById = async (req, res) => {
   try {
     const { id } = req.params;
-    const [rows] = await conmysql.query('SELECT * FROM resultado WHERE res_id = ?', [id]);
+    const [rows] = await conmysql.query('SELECT * FROM resultado WHERE id_res = ?', [id]);
     if (rows.length === 0) return res.status(404).json({ message: 'Resultado no encontrado' });
     res.status(200).json(rows[0]);
   } catch (error) {

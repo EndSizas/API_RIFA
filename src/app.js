@@ -14,12 +14,12 @@ app.use(express.json());
 app.use(cors()); // Agregar CORS si es necesario
 
 // Rutas
-app.use('/api/usuarios', usuarioRoutes);
-app.use('/api/equipos', equipoRoutes);
-app.use('/api/partidos', partidoRoutes);
-app.use('/api/perfiles', perfilRoutes);
-app.use('/api/pronosticos', pronosticoRoutes);
-app.use('/api/resultados', resultadoRoutes);
+app.use('/api/usuario', usuarioRoutes);
+app.use('/api/equipo', equipoRoutes);
+app.use('/api/partido', partidoRoutes);
+app.use('/api/perfil', perfilRoutes);
+app.use('/api/pronostico', pronosticoRoutes);
+app.use('/api/resultado', resultadoRoutes);
 
 // Ruta raíz
 app.get('/', (req, res) => {

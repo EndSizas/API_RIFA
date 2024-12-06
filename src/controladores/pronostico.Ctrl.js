@@ -14,7 +14,7 @@ export const getPronosticos = async (req, res) => {
 export const getPronosticoById = async (req, res) => {
   try {
     const { id } = req.params;
-    const [rows] = await conmysql.query('SELECT * FROM pronostico WHERE pro_id = ?', [id]);
+    const [rows] = await conmysql.query('SELECT * FROM pronostico WHERE id_pron = ?', [id]);
     if (rows.length === 0) return res.status(404).json({ message: 'Pronóstico no encontrado' });
     res.status(200).json(rows[0]);
   } catch (error) {

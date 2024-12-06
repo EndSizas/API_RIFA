@@ -14,7 +14,7 @@ export const getPartidos = async (req, res) => {
 export const getPartidoById = async (req, res) => {
   try {
     const { id } = req.params;
-    const [rows] = await conmysql.query('SELECT * FROM partido WHERE par_id = ?', [id]);
+    const [rows] = await conmysql.query('SELECT * FROM partido WHERE id_par = ?', [id]);
     if (rows.length === 0) return res.status(404).json({ message: 'Partido no encontrado' });
     res.status(200).json(rows[0]);
   } catch (error) {
@@ -35,4 +35,3 @@ export const createPartido = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-  
