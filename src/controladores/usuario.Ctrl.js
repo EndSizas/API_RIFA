@@ -40,3 +40,34 @@ export const crearUsuario = async (req, res) => {
         res.status(500).json({ message: 'Error al crear el usuario', error });
     }
 };
+
+// Login de usuario (validación de credenciales)
+export const login = async (req, res) => {
+    const { usuario, clave } = req.body;
+
+    // Verificar si se han proporcionado ambos campos
+    if (!usuario || !clave) {
+        return res.status(400).json({ message: 'Usuario y clave son requeridos' });
+    }
+
+    try {
+        // Consulta para obtener el usuario por nombre de usuario y clave
+        const [rows] = await conmysql.query('SELECT * FROM usuario WHERE usuario = ? AND clave = ?', [usuario, clave]);
+
+        if (rows.length === 0) {
+            return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
+        }
+
+        // Aquí puedes devolver los detalles del usuario o un token de autenticación
+        // Por ahora, devolveremos los datos básicos del usuario
+        res.json({
+            message: 'Ingreso exitoso',
+            user: rows[0]
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al intentar iniciar sesión', error });
+    }
+};
+
+
+
