@@ -1,10 +1,11 @@
 import { Router } from 'express';
-import { getPartidos, getPartidoById, createPartido } from '../controladores/partido.Ctrl.js';
+import { crearPartido } from '../controladores/partido.Ctrl.js';
+import { verificarAdmin } from '../middlewares/authMiddleware.js';
 
 const router = Router();
 
-router.get('/', getPartidos);
-router.get('/:id', getPartidoById);
-router.post('/', createPartido);
+// Ruta para crear un partido (solo administrador)
+router.post('/', verificarAdmin, crearPartido);
 
 export default router;
+

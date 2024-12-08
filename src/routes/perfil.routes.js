@@ -1,12 +1,16 @@
 import { Router } from 'express';
-import { getPerfiles, getPerfilById, registerPartido, registerPronostico } from '../controladores/perfil.Ctrl.js';
+import { obtenerPerfiles, obtenerPerfilPorId, crearPerfil } from '../controladores/perfil.Ctrl.js';
 
 const router = Router();
 
-// Rutas para perfil
-router.get('/', getPerfiles); // Obtener todos los perfiles
-router.get('/:id', getPerfilById); // Obtener perfil por ID
-router.post('/partido', registerPartido); // Registrar partido (solo administrador)
-router.post('/pronostico', registerPronostico); // Registrar pronóstico (solo usuario normal)
+// Ruta para obtener todos los perfiles
+router.get('/', obtenerPerfiles);
+
+// Ruta para obtener un perfil por ID
+router.get('/:id', obtenerPerfilPorId);
+
+// Ruta para crear un nuevo perfil
+router.post('/', crearPerfil);
 
 export default router;
+

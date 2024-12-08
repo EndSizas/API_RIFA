@@ -17,12 +17,12 @@ app.use(express.json());
 app.use(cors()); // Habilitar CORS para todas las rutas
 
 // Rutas
-app.use('/api/usuario', usuariosRoutes);
-app.use('/api/partido', partidosRoutes);
-app.use('/api/equipo', equipoRoutes);
+app.use('/api/usuarios', usuariosRoutes);
+app.use('/api/partidos', partidosRoutes);
+app.use('/api/equipos', equipoRoutes);
 app.use('/api/perfil', perfilRoutes);
-app.use('/api/resultado', resultadosRoutes);
-app.use('/api/pronostico', pronosticosRoutes);
+app.use('/api/resultados', resultadosRoutes);
+app.use('/api/pronosticos', pronosticosRoutes);
 
 // Middleware para manejar rutas no encontradas
 app.use((req, res, next) => {

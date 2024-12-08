@@ -1,10 +1,15 @@
 import { Router } from 'express';
-import { getUsuarios, getUsuarioById, createUsuario } from '../controladores/usuario.Ctrl.js';
+import { obtenerUsuarios,obtenerUsuarioPorId, crearUsuario } from '../controladores/usuario.Ctrl.js'; // Cambia según los métodos que tengas implementados
 
 const router = Router();
 
-router.get('/', getUsuarios);
-router.get('/:id', getUsuarioById);
-router.post('/', createUsuario);
+// Ruta para obtener todos los usuarios
+router.get('/', obtenerUsuarios);
+
+// Ruta para obtener un usuario por ID
+router.get('/:id', obtenerUsuarioPorId);
+
+// Ruta para crear un nuevo usuario
+router.post('/', crearUsuario);
 
 export default router;

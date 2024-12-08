@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { getPronosticos, getPronosticoById, createPronostico } from '../controladores/pronostico.Ctrl.js';
+import { crearPronostico } from '../controladores/pronostico.Ctrl.js';
+import { verificarUsuarioNormal } from '../middlewares/authMiddleware.js';
 
 const router = Router();
 
-router.get('/', getPronosticos);
-router.get('/:id', getPronosticoById);
-router.post('/', createPronostico);
+// Ruta para crear un pronóstico (solo usuario normal)
+router.post('/', verificarUsuarioNormal, crearPronostico);
 
 export default router;
 
