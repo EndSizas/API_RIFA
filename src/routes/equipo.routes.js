@@ -1,16 +1,9 @@
-import { Router } from 'express';
-import { obtenerEquipos, obtenerEquipoPorId, crearEquipo } from '../controladores/equipo.Ctrl.js';
+import express from 'express';
+import { getEquipos } from '../controladores/equipo.Ctrl.js';
+import { authMiddleware } from '../middlewares/authMiddleware.js';
 
-const router = Router();
+const router = express.Router();
 
-// Ruta para obtener todos los equipos
-router.get('/', obtenerEquipos);
-
-// Ruta para obtener un equipo por ID
-router.get('/:id', obtenerEquipoPorId);
-
-// Ruta para crear un nuevo equipo
-router.post('/', crearEquipo);
+router.get('/', authMiddleware(['ADMIN', 'NORMAL']), getEquipos);
 
 export default router;
-

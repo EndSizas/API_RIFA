@@ -1,16 +1,9 @@
-import { Router } from 'express';
-import { obtenerPerfiles, obtenerPerfilPorId, crearPerfil } from '../controladores/perfil.Ctrl.js';
+import express from 'express';
+import { getPerfiles } from '../controladores/perfil.Ctrl.js';
+import { authMiddleware } from '../middlewares/authMiddleware.js';
 
-const router = Router();
+const router = express.Router();
 
-// Ruta para obtener todos los perfiles
-router.get('/', obtenerPerfiles);
-
-// Ruta para obtener un perfil por ID
-router.get('/:id', obtenerPerfilPorId);
-
-// Ruta para crear un nuevo perfil
-router.post('/', crearPerfil);
+router.get('/', authMiddleware(['ADMIN', 'NORMAL']), getPerfiles);
 
 export default router;
-
