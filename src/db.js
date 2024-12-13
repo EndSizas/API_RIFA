@@ -1,11 +1,9 @@
-import mysql from 'mysql2/promise';
-
-// Configuración de la conexión a la base de datos
-export const conmysql = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_DATABASE || 'db_rufa',
-  port: process.env.DB_PORT || 3306
-});
-
+import { createPool } from "mysql2/promise";
+import { DB_HOST, DB_DATABASE, DB_USER, DB_PASSWORD, DB_PORT } from './config.js'
+export const conmysql=createPool({
+    host:DB_HOST,
+    database:DB_DATABASE,
+    user:DB_USER,
+    password:DB_PASSWORD,
+    port:DB_PORT
+})

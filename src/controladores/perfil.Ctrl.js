@@ -1,14 +1,14 @@
-// /controladores/perfil.Ctrl.js
 import { conmysql } from '../db.js';
 
-export const getPerfiles = async (req, res) => {
+// Obtener todos los perfiles
+export const obtenerPerfiles = async (req, res) => {
     const query = 'SELECT * FROM perfil';
-    try {
-        const [result] = await conmysql.query(query);
-        res.json(result);
-    } catch (error) {
-        res.status(500).json({ error });
-    }
+    
+    conmysql.query(query, (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        return res.json(results);
+    });
 };
+
 
 

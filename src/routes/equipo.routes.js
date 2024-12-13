@@ -1,9 +1,10 @@
-import express from 'express';
-import { getEquipos } from '../controladores/equipo.Ctrl.js';
-import { authMiddleware } from '../middlewares/authMiddleware.js';
+import { Router } from 'express';
+import { obtenerEquipos, obtenerEquipoPorId } from '../controladores/equipo.Ctrl.js';
 
-const router = express.Router();
+const router = Router();
 
-router.get('/', authMiddleware(['ADMIN', 'NORMAL']), getEquipos);
+router.get('/', obtenerEquipos); // Obtener todos los equipos
+router.get('/:id_eq', obtenerEquipoPorId); // Obtener un equipo por ID
 
 export default router;
+

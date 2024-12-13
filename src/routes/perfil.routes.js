@@ -1,9 +1,9 @@
-import express from 'express';
-import { getPerfiles } from '../controladores/perfil.Ctrl.js';
-import { authMiddleware } from '../middlewares/authMiddleware.js';
+import { Router } from 'express';
+import { obtenerPerfiles } from '../controladores/perfil.Ctrl.js';
 
-const router = express.Router();
+const router = Router();
 
-router.get('/', authMiddleware(['ADMIN', 'NORMAL']), getPerfiles);
+router.get('/', obtenerPerfiles); // Obtener todos los perfiles
 
 export default router;
+

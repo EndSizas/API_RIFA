@@ -1,9 +1,12 @@
-// /routes/resultado.routes.js
-import express from 'express';
-import { getResultados } from '../controladores/resultado.Ctrl.js';
-import { authMiddleware } from '../middlewares/authMiddleware.js';
+import { Router } from "express";
+import {
+    getResultados, 
+    getresultadosxid
+} from '../controladores/resultadoCtrl.js'
+const router=Router()
+//armar nuestras rutas
 
-const router = express.Router();
-router.get('/', authMiddleware(['ADMIN', 'NORMAL']), getResultados);
-export default router;
+router.get('/resultados', getResultados)  //select
+router.get('/resultados/:id',getresultadosxid)  //select x id
 
+export default router
